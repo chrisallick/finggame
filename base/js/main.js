@@ -31,14 +31,14 @@ $(document).ready(function(){
     $("#wrapper").append( canvas );
 
 	window.requestAnimFrame = (function(){
-	  return  window.requestAnimationFrame       || 
-	          window.webkitRequestAnimationFrame || 
-	          window.mozRequestAnimationFrame    || 
-	          window.oRequestAnimationFrame      || 
-	          window.msRequestAnimationFrame     || 
-	          function(/* function */ animate, /* DOMElement */ canvas){
-	            window.setTimeout(animate, 1000 / 60);
-	          };
+		return  window.requestAnimationFrame       || 
+				window.webkitRequestAnimationFrame || 
+	          	window.mozRequestAnimationFrame    || 
+	          	window.oRequestAnimationFrame      || 
+	          	window.msRequestAnimationFrame     || 
+	          	function(animate, canvas){
+	            	window.setTimeout(animate, 1000 / 60);
+	          	};
 	})();
         
     $("#canvas").fadeIn(1000);
