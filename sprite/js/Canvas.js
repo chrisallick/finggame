@@ -12,6 +12,11 @@ Canvas = function( _target, _options ) {
     this.assets_loaded = 0;
     this.images = [];
 
+    this.background = function( bg ) {
+        self.context.fillStyle = bg;
+        self.context.fillRect( 0, 0, self.w, self.h );
+    }
+
     this.setup = function() {
         self.canvas = document.createElement( 'canvas' );
         self.canvas.id = "canvas";
@@ -27,19 +32,13 @@ Canvas = function( _target, _options ) {
                 var img = new Image();
                 img.onload = function() {
                     self.assets_loaded++;
-                    var temp = {};
-                    temp.image = img;
-                    temp.x = 0;
-                    temp.y = 0;
-                    temp.w = 30;
-                    temp.h = 30;
-                    temp.step = 0;
-                    self.images.push( temp );
+                    // image_object, x, y, width, height, speed, index
+                    self.images.push( new Sprite( self, img, 0, 0, 30, 30, 5, 3) );
                 }
                 img.src = self.assets[i];
             }
         }
-            
+
         if( self.autostart ) {
             self.animate();
         }
