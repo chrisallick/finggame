@@ -1,13 +1,13 @@
-Canvas = function( _width, _height, _target, _autostart ) {
+Canvas = function( _target, _options ) {
     var self = this;
-    
-    this.t = _target;
-    this.w = _width;
-    this.h = _height;
-    this.auto = _autostart;
-
     this.canvas;
     this.context;
+
+    this.t = _target;
+    this.w = _options.width;
+    this.h = _options.height;
+    this.autostart = _options.autostart;
+    this.draw = _options.draw;
 
     this.setup = function() {
         self.canvas = document.createElement( 'canvas' );
@@ -20,29 +20,14 @@ Canvas = function( _width, _height, _target, _autostart ) {
         self.t.append( self.canvas );
             
         $(self.canvas).hide().fadeIn(1000);
-        if( self.auto ) {
+        if( self.autostart ) {
             self.animate();
         }
     }
 
-    this.draw = function() {
-        var time = new Date().getTime() * 0.002;
-        var x = Math.sin( time ) * 96 + 128;
-        var y = Math.cos( time * 0.9 ) * 96 + 128;
-
-        self.context.fillStyle = 'rgb(245,245,245)';
-        self.context.fillRect( 0, 0, 255, 255 );
-
-        self.context.fillStyle = 'rgb(255,0,0)';
-        self.context.beginPath();
-        self.context.arc( x, y, 10, 0, Math.PI * 2, true );
-        self.context.closePath();
-        self.context.fill();
-    }
-
-    this.animate = function() {
+    this.animate = function(timestamp) {
         requestAnimFrame( self.animate );
-        self.draw();
+        self.draw(timestamp);
     }
 
     this.start = function() {
