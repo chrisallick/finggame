@@ -22,8 +22,8 @@ var canvas, context;
 $(document).ready(function() {
     canvas 	= document.createElement( 'canvas' );
     canvas.id = "canvas";
-    canvas.width = 640;
-    canvas.height = 480;
+    canvas.width = 256;
+    canvas.height = 256;
 
     context = canvas.getContext( '2d' );
 
