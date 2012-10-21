@@ -1,4 +1,4 @@
-var example;
+var example, sfx;
 $(document).ready(function() {
     /*
         wrapper_element, options
@@ -16,4 +16,6 @@ $(document).ready(function() {
     });
 
     example.setup();
+
+    sfx = new Audio("wav/sfx.wav");
 });
