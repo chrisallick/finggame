@@ -19,8 +19,8 @@ animate = function() {
 }
 
 var canvas, context;
-$(document).ready(function(){
-    canvas = document.createElement( 'canvas' );
+$(document).ready(function() {
+    canvas 	= document.createElement( 'canvas' );
     canvas.id = "canvas";
     canvas.width = 640;
     canvas.height = 480;
@@ -28,18 +28,7 @@ $(document).ready(function(){
     context = canvas.getContext( '2d' );
 
     $("#wrapper").append( canvas );
-
-	window.requestAnimFrame = (function(){
-		return  window.requestAnimationFrame       || 
-				window.webkitRequestAnimationFrame || 
-	          	window.mozRequestAnimationFrame    || 
-	          	window.oRequestAnimationFrame      || 
-	          	window.msRequestAnimationFrame     || 
-	          	function(callback, element){
-	            	window.setTimeout(callback, 1000 / 60);
-	          	};
-	})();
         
-    $("#canvas").fadeIn(1000);
+    $("#canvas").hide().fadeIn(1000);
     animate();
 });
