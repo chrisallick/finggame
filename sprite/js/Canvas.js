@@ -33,7 +33,7 @@ Canvas = function( _target, _options ) {
                 img.onload = function() {
                     self.assets_loaded++;
                     // image_object, x, y, width, height, speed, index
-                    self.images.push( new Sprite( self, img, 0, 0, 30, 30, 5, 3) );
+                    self.images.push( new Sprite( self, img, 0, 0, 30, 30, 2, 3) );
                 }
                 img.src = self.assets[i];
             }
