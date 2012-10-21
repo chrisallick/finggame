@@ -1,31 +1,46 @@
-window.requestAnimFrame = ( function() {
-    return  window.requestAnimationFrame       || 
-            window.webkitRequestAnimationFrame || 
-            window.mozRequestAnimationFrame    || 
-            window.oRequestAnimationFrame      || 
-            window.msRequestAnimationFrame     || 
-            function(draw, element) {
-                window.setTimeout(draw, 1000 / 60);
-            };
-})();
+draw = function() {
 
+    var time = new Date().getTime() * 0.002;
+    var x = Math.sin( time ) * 96 + 128;
+    var y = Math.cos( time * 0.9 ) * 96 + 128;
+
+    context.fillStyle = 'rgb(245,245,245)';
+    context.fillRect( 0, 0, 255, 255 );
+
+    context.fillStyle = 'rgb(255,0,0)';
+    context.beginPath();
+    context.arc( x, y, 10, 0, Math.PI * 2, true );
+    context.closePath();
+    context.fill();
+}
+
+animate = function() {
+    requestAnimFrame( animate );
+    draw();
+}
+
+var canvas, context;
 $(document).ready(function(){
-	animate = function(timestamp) {
-        requestAnimFrame(animate);
-        draw(timestamp);
-    }
+    canvas = document.createElement( 'canvas' );
+    canvas.id = "canvas";
+    canvas.width = 640;
+    canvas.height = 480;
 
-    if( $("#canvas").length > 0 ) {
-        w = $(document).width();
-        h = 370;
-        $("#canvas").attr("height", h);
-        $("#canvas").attr("width", w);
-    
-        ps = new ParticleSystem();
-        // for every 100 pixels, release 4 particles
-        ps.init( w, h, Math.floor(w/100)*3 );
+    context = canvas.getContext( '2d' );
+
+    $("#wrapper").append( canvas );
+
+	window.requestAnimFrame = (function(){
+	  return  window.requestAnimationFrame       || 
+	          window.webkitRequestAnimationFrame || 
+	          window.mozRequestAnimationFrame    || 
+	          window.oRequestAnimationFrame      || 
+	          window.msRequestAnimationFrame     || 
+	          function(/* function */ animate, /* DOMElement */ canvas){
+	            window.setTimeout(animate, 1000 / 60);
+	          };
+	})();
         
-        $("#canvas").fadeIn(1000);
-        animate();
-    }
+    $("#canvas").fadeIn(1000);
+    animate();
 });
