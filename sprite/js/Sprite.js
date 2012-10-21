@@ -50,21 +50,25 @@ Sprite = function( _parent, _img, _x, _y, _width, _height, _speed, _index) {
                 self.index = 1;
                 self.x-=self.speed;
         		if( self.x <= 0 ) { self.x = 0; }
+        		return false;
             break;
             case 38: // up arrow
                 self.index = 3;
                 self.y-=self.speed;
                 if( self.y <= 0 ) { self.y = 0; }
+                return false;
             break;
             case 39: // right arrow
                 self.index = 2;
                 self.x+=self.speed;
                 if( self.x >= parent.w-self.w ) { self.x = parent.w-self.w; }
+                return false;
             break;
             case 40: // down arrow
                 self.index = 0;
                 self.y+=self.speed;
                 if( self.y >= parent.h-self.h ) { self.y = parent.h-self.h; }
+                return false;
             break;
         }
     });
