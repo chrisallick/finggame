@@ -1,5 +1,4 @@
 draw = function() {
-
     var time = new Date().getTime() * 0.002;
     var x = Math.sin( time ) * 96 + 128;
     var y = Math.cos( time * 0.9 ) * 96 + 128;
@@ -36,8 +35,8 @@ $(document).ready(function(){
 	          	window.mozRequestAnimationFrame    || 
 	          	window.oRequestAnimationFrame      || 
 	          	window.msRequestAnimationFrame     || 
-	          	function(animate, canvas){
-	            	window.setTimeout(animate, 1000 / 60);
+	          	function(callback, element){
+	            	window.setTimeout(callback, 1000 / 60);
 	          	};
 	})();
         
