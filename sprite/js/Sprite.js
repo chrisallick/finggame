@@ -40,7 +40,6 @@ Sprite = function( _parent, _img, _x, _y, _width, _height, _speed, _index) {
 
     /*
         bind keyboard actions
-        check to see if you are in the comment box
         before eating the keyboard event
     */
     $(document).keydown(function(e) {
