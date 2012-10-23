@@ -1,0 +1,12 @@
+I'm making a game... and a book.
+
+Mmm, not exactly sure how to do those things, but this is the collection of code that I'm building on.  Each example builds on the last and I'm going back and updating the base until I'm done.  I document what is accomplished by each in my blog:
+
+http://youthinkthisisafuckinggame.tumblr.com/
+
+However, there is little documentation otherwise. I'll keep the order in this REAMDE though so you can see the roadmap of development:
+
+1) base - minimal HTML5 Canvas app to start from with some plugins
+2) sprite - a small sprite engine for handling movement around screen and animation
+3) eatAndGrow - you can move a animated sprite around and eat food, you can win
+4) chaseAndEat - chase food, food changes size, you can win and there is randomness. Also, an opaque overlay to activate iFrame (really nice feature)
