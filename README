@@ -10,3 +10,5 @@ However, there is little documentation otherwise. I'll keep the order in this RE
 2) sprite - a small sprite engine for handling movement around screen and animation
 3) eatAndGrow - you can move a animated sprite around and eat food, you can win
 4) chaseAndEat - chase food, food changes size, you can win and there is randomness. Also, an opaque overlay to activate iFrame (really nice feature)
+5) helloRubyMotion - Welcome to RubyMotion derp, everyone hates delegates.
+6) chaseAndEatRubyMotion - created an iOS version of the app. Really, just to test RubyMotion, but also to see if Canvas is a viable platform for makin the children's book.  Either way I'm going to use RubyMotion. Cause XCode and sawk iiiit.
