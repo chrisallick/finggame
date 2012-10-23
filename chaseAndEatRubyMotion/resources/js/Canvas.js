@@ -31,7 +31,6 @@ Canvas = function( _target, _options ) {
     }
 
     this.setup = function() {
-        self.setupOverlays();
         self.canvas = document.createElement( 'canvas' );
         self.canvas.id = "canvas";
         self.canvas.width = self.w;
