@@ -30,16 +30,6 @@ Canvas = function( _target, _options ) {
         }
     }
 
-    this.setupOverlays = function() {
-        // $(window).blur(function(){
-        //     self.active = false;
-        // });
-
-        // $(window).focus(function(){
-        //     self.active = true;
-        // });
-    }
-
     this.setup = function() {
         self.setupOverlays();
         self.canvas = document.createElement( 'canvas' );
