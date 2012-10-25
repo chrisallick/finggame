@@ -44,7 +44,7 @@ $(document).ready(function() {
             var counter = 0;
             for( var player in this.players ) {
                 var score = "player " + player + ": " + this.players[player].score;
-                this.context.fillText(score, 20, 20+(20*counter));
+                this.context.fillText(score, 20, 20+(30*counter));
                 counter++;
             }
             
