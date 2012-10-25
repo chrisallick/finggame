@@ -3,7 +3,8 @@ require 'em-websocket'
 
 EventMachine.run {
 
-    @channels = Hash.new{ |h,k| h[k] = { :channel => EM::Channel.new } }
+
+    @channels = Hash.new{ |h,k| h[k] = { :channel => EM::Channel.new, :players => {} } }
     @data_resp = false
 
     EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8081) do |ws|
@@ -18,6 +19,9 @@ EventMachine.run {
             room = ws.request["path"].split("/")[1]
             if room
                 sid = @channels[room][:channel].subscribe{ |msg| ws.send msg }
+                @channels[room][:players][sid] = sid
+                data = { :type => "welcome", :data => sid, :players => @channels[room][:players] }.to_json
+                ws.send data
             else
                 puts "probably close this or something..."
             end
@@ -25,13 +29,15 @@ EventMachine.run {
             ws.onclose {
                 # DESTROY THEM!!!!
                 @channels[room][:channel].unsubscribe(sid)
-                @channels[room][:clients].delete(sid)
+                @channels[room][:players].delete(sid)
+                data = { :type => "leave", :data => sid }.to_json
+                @channels[room][:channel].push data
             }
 
             ws.onmessage { |msg|
                 begin
                     message = JSON.parse( msg )
-                    puts message
+                    @channels[room][:channel].push msg
                 rescue Exception => e
                     puts "not JSON?"
                     puts e

@@ -9,7 +9,16 @@ TrashIO = function( _p, _room ) {
     //this.ws_url = "ws://" + window.location.hostname + ":8081/" + parent.room;
     this.ws_url = "ws://localhost:8081/" + self.room;
 
-    this.onWelcome = function(msg) {
+    this.onWelcome = function(sid,players) {
+        for( var i in players ) {
+            if( players[i] == sid ) {
+                parent.readyPlayer( sid );
+            } else {
+                parent.addPlayer( players[i] );
+            }
+        }
+        var msg = self.createMessage("join",sid);
+        self.sendMessage(msg);
     }
 
     this.sendMessage = function(msg) {
@@ -41,7 +50,7 @@ TrashIO = function( _p, _room ) {
         this.connection.onmessage = function( event ) {
             try {
                 self.parseMessage( JSON.parse(event.data) );
-            } catch (err) {}
+            } catch (err) { console.log(err); }
         }
 
         this.connection.onopen = function( event ) {
@@ -54,11 +63,25 @@ TrashIO = function( _p, _room ) {
     }
 
     this.parseMessage = function( msg ) {
-        console.log( msg );
-        // if( msg["type"] ) {
-        //     if( msg["type"] == "welcome" ) {
-        //         self.onWelcome( msg );
-        //     }
-        // }
+        if( msg["type"] ) {
+            if( msg["type"] == "welcome" ) {
+                self.onWelcome( msg["data"], msg["players"] );
+            } else if( msg["type"] == "leave" && msg["msg"] != parent.sid ) {
+                parent.removePlayer( msg["data"] );
+            } else if( msg["type"] == "join" && msg["msg"] != parent.sid ) {
+                parent.addPlayer( msg["msg"] );
+            } else if ( msg["type"] == "move" && msg["msg"] != parent.sid ) {
+                parent.players[msg["msg"]].x = msg.x;
+                parent.players[msg["msg"]].y = msg.y;
+                parent.players[msg["msg"]].sprite.index = msg.index;
+            } else if( msg["type"] == "food" ) {
+                parent.food[msg["msg"]].alive = false;
+                parent.alive--;
+            } else if( msg["type"] == "score" ) {
+                parent.players[msg["msg"]].score++;
+            }
+        }
     }
+
+    self.setup();
 };

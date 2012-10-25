@@ -24,7 +24,7 @@ Food = function( _parent, _x, _y, _width, _height, _value ) {
 	            }
 	        }
 
-	        if( self.step > 3 ) {
+	        if( self.step > 5 ) {
 	        	self.step = 0;
 	        	self.w = self.h = getRandInt( 8, 30 );
 	        	self.x = getRandInt(0,parent.w-self.w);
@@ -38,7 +38,7 @@ Food = function( _parent, _x, _y, _width, _height, _value ) {
         //console.log( self.x, self.y, character.x, character.y );
 		if( self.x >= character.x && self.x <= character.x+character.w || self.x+self.w >= character.x && self.x+self.w <= character.x+character.w ) {
 			if( self.y >= character.y && self.y <= character.y+character.h || self.y+self.h >= character.y && self.y+self.h <= character.y+character.h ) {
-				self.alive = false;
+				//self.alive = false;
 				return true;
 			}
 		}
