@@ -8,7 +8,7 @@ TrashIO = function( _p, _room ) {
 
     //this.ws_url = "ws://" + window.location.hostname + ":8081/" + parent.room;
     //this.ws_url = "ws://localhost:8081/" + self.room;
-    this.ws_url = "ws://stage.trash.io:8081/" + self.room;
+    this.ws_url = "ws://stage.trash.io:8081/worms";
 
     this.onWelcome = function(sid,players) {
         for( var i in players ) {
