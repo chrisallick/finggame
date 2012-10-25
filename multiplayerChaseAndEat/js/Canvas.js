@@ -28,13 +28,15 @@ Canvas = function( _target, _options ) {
         for(var i = 0, len = self.food.length; i < len; i++ ) {
             if( self.food[i].alive && self.food[i].hitTest(self.players[self.sid]) ) {
                 sfx.play();
+
+                self.players[self.sid].score++;
+                self.alive--;
+                self.food[i].alive = false;
+
                 var msg = self.trashio.createMessage("score", self.sid);
                 self.trashio.sendMessage(msg);
                 var msg = self.trashio.createMessage("food", i);
                 self.trashio.sendMessage(msg);
-
-                //self.players[self.sid].score++;
-                //self.alive--;
             }
         }
     }

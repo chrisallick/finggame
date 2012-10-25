@@ -75,10 +75,10 @@ TrashIO = function( _p, _room ) {
                 parent.players[msg["msg"]].x = msg.x;
                 parent.players[msg["msg"]].y = msg.y;
                 parent.players[msg["msg"]].sprite.index = msg.index;
-            } else if( msg["type"] == "food" ) {
+            } else if( msg["type"] == "food" && msg["msg"] != parent.sid ) {
                 parent.food[msg["msg"]].alive = false;
                 parent.alive--;
-            } else if( msg["type"] == "score" ) {
+            } else if( msg["type"] == "score" && msg["msg"] != parent.sid ) {
                 parent.players[msg["msg"]].score++;
             }
         }
