@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'em-websocket'
-require 'thin'
 
 EventMachine.run {
 
@@ -15,7 +14,6 @@ EventMachine.run {
             end
         end
 
-        timer = nil
         ws.onopen {
             room = ws.request["path"].split("/")[1]
             if room
@@ -41,6 +39,4 @@ EventMachine.run {
             }
         }
     end
-
-    App.run!({ :port => 8989 })
 }
