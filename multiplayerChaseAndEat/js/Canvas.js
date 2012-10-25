@@ -106,8 +106,13 @@ Canvas = function( _target, _options ) {
 
     this.animate = function(timestamp) {
         requestAnimFrame( self.animate );
-        if( self.assets_loaded == self.assets.length ) {
+        if( self.assets_loaded == self.assets.length && self.trashio.bConnected ) {
             self.draw(timestamp);
+        } else if( !self.trashio.bConnected ) {
+            self.context.fillStyle = "rgba(0,0,0,.78)";
+            self.context.fillRect(0,0,self.w,self.h);
+            self.context.fillStyle = "#FFFFFF";
+            self.context.fillText("WebSocket server down!", 200, 200);
         }
     }
 

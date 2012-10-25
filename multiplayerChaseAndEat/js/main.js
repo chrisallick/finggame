@@ -41,6 +41,7 @@ $(document).ready(function() {
                     this.context.fillText("player " + this.players[highest].score + " won!", 200, 200);
                 }
             }
+
             var counter = 0;
             for( var player in this.players ) {
                 var score = "player " + player + ": " + this.players[player].score;
