@@ -1,0 +1,18 @@
+html, body { width: 100%; height: 100%; background: #000000; }
+
+img { display: block; }
+
+#wrapper { width: 100%; height: 100%; }
+
+#stream { width: 100% }
+#stream li { position: relative; }
+#stream li .image { width: 100%; opacity: 0; position: relative; z-index: 10; }
+#stream li .loader { position: absolute; z-index: 9; }
+#stream li .uploadedby { position: absolute; top: 0px; width: 100%; z-index: 11; font-size: 18px; color: #FFFFFF; background-color: rgba(0,0,0,.3); text-align: center; }
+
+#setusername { display: none; width: 100%; height: 40px; position: absolute; top: 0px; z-index: 20; }
+#username { width: 100%; height: 40px; font-size: 20px; }
+
+#fileinput { height: 40px; position: fixed; bottom: 0px; z-index: 10; width: 100%; display: none; }
+#fileinput img { width: 100%; position: absolute; top: 0px; }
+#fileinput #file { opacity: 0; border: 1px solid white; width: 100%; height: 100%; position: absolute; top: 0px; display: block; }

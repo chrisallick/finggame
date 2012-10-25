@@ -1,0 +1,21 @@
+#archive-wrapper { position: absolute; bottom: -90px; height: 98px; left: 0px; z-index: 1000; }
+#archive-wrapper .archive-content { overflow: hidden; position: relative; height: 98px; }
+
+#archive-wrapper .archive { width: 10000px; position: absolute; left: 0px; top: 0px; }
+#archive-wrapper .archive .thumb { position: relative; margin: 0px 4px 0px 4px; width: 90px; height: 90px; float: left; cursor: pointer; overflow: hidden; }
+#archive-wrapper .archive .thumb img { height: 90px; position: absolute; top: 4px; left: 0px; }
+#archive-wrapper .archive .thumb .thumb_img { opacity: 0; }
+#archive-wrapper .archive .ytvideo .playbutton {
+	z-index: 100;
+	position: absolute;
+	width: 28px;
+	height: 28px;
+	top: 31px;
+	left: 31px;
+	display: block;
+	background: url("/img/icons/video-thumb-icon.png") top left no-repeat;
+}
+/*#archive-wrapper .archive .box { border: 4px solid #4CEBAD; border-radius: 3px; margin: 0px; }*/
+#archive-wrapper .archive .thumb:first-child { }
+#archive-wrapper .archive .selected { border: 4px solid #4CEBAD; border-radius: 3px; margin: 0px;}
+#archive-wrapper .archive .selected img { top: 0px; left: 0px; }

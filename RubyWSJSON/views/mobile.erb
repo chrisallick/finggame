@@ -1,0 +1,19 @@
+        <script>
+            console.log("?");
+            var uploaded_image = "<%= uploaded_image %>";
+        </script>
+        <div id="wrapper">
+            <id id="content">
+                <form id="setusername" action="/mobileupload" method="post">
+                    <input type="text" name="name" id="username" placeholder="Enter username..." />
+                </form>
+                <ul id="stream">
+                </ul>
+                <div id="fileinput">
+                    <form id="uploadimage" action="/mobileupload" method="post" enctype='multipart/form-data'>
+                        <img src="/img/mobile/logo.png" />
+                        <input type="file" id="file" name="file" />
+                    </form>
+                </div>
+            </div>
+        </div>

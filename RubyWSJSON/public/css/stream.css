@@ -1,0 +1,3 @@
+#stream { text-align: center; position: relative; }
+#stream .loader { position: absolute; z-index: 9; }
+#stream .currentstreamitem { position: absolute; z-index: 10; }
