@@ -1,10 +1,5 @@
 var example, sfx, trash;
 $(document).ready(function() {
-
-    trash = new Trash(window);
-    trash.trashio = new TrashIO(trash);
-    trash.setup();
-
     /*
         wrapper_element, options
         this might be the dumbest thing ever...

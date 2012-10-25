@@ -2,6 +2,7 @@ Canvas = function( _target, _options ) {
     var self = this;
     this.canvas;
     this.context;
+    this.trashio;
 
     this.t = _target;
     this.w = _options.width;
@@ -51,6 +52,8 @@ Canvas = function( _target, _options ) {
         self.context.font = "20pt Arial";
 
         self.t.append( self.canvas );
+
+        self.trashio = new TrashIO(self,"worms");
 
         if( example.assets ) {
             for( var i = 0, len = self.assets.length; i < len; i++ ) {

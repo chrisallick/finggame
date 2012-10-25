@@ -6,7 +6,7 @@ EventMachine.run {
     @channels = Hash.new{ |h,k| h[k] = { :channel => EM::Channel.new } }
     @data_resp = false
 
-    EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
+    EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8081) do |ws|
         def check_response(conn)
             if @data_resp == false
                 puts "ping/ponged out"
@@ -33,7 +33,7 @@ EventMachine.run {
                     message = JSON.parse( msg )
                     puts message
                 rescue Exception => e
-                    puts "could not parse JSON."
+                    puts "not JSON?"
                     puts e
                 end
             }
