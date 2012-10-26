@@ -45,6 +45,7 @@ Canvas = function( _target, _options ) {
         // canvas, x, y, sprite
         self.sid = sid;
         self.players[sid] =  new Player( self, sid, 0, 0, 2, self.sprites[0] );
+        //self.player[self.sid].active = true;
     }
 
     this.addPlayer = function( sid ) {
@@ -87,8 +88,6 @@ Canvas = function( _target, _options ) {
                 var img = new Image();
                 img.onload = function() {
                     self.assets_loaded++;
-                    // image_object, x, y, width, height, speed, index
-                    //self.sprites.push( new Sprite( self, img, getRandInt(0,example.w-30), getRandInt(0,example.h-30), 30, 30, 2, 3) );
                     self.sprites.push( img );
                 }
                 img.src = self.assets[i];
@@ -177,6 +176,8 @@ Canvas = function( _target, _options ) {
     });
 
     $(document).keyup(function(e){
-        self.moving = 0;
+        if( self.players[self.sid] ) {
+            self.players[self.sid].moving = 0;            
+        }
     });
 }

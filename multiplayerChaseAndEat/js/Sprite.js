@@ -15,7 +15,7 @@ Sprite = function( _p, _img, _width, _height, _index) {
             self.last_time = timestamp;
         } else {
             if( timestamp - self.last_time > 500 ) {
-            	if( parent.moving && parent.active ) {
+            	if( parent.moving ) {
                 	self.step++;
             	}
                 self.last_time = timestamp;
