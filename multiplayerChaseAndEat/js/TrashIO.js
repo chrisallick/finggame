@@ -80,6 +80,7 @@ TrashIO = function( _p, _room ) {
                 parent.alive--;
             } else if( msg["type"] == "score" && msg["msg"] != parent.sid ) {
                 parent.players[msg["msg"]].score++;
+                sfx.play();
             }
         }
     }

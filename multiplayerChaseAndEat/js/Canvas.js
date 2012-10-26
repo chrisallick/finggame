@@ -45,7 +45,6 @@ Canvas = function( _target, _options ) {
         // canvas, x, y, sprite
         self.sid = sid;
         self.players[sid] =  new Player( self, sid, 0, 0, 2, self.sprites[0] );
-        //self.player[self.sid].active = true;
     }
 
     this.addPlayer = function( sid ) {
