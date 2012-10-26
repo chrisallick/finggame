@@ -35,7 +35,9 @@ Canvas = function( _target, _options ) {
 
                 var msg = self.trashio.createMessage("score", self.sid);
                 self.trashio.sendMessage(msg);
+
                 var msg = self.trashio.createMessage("food", i);
+                msg["sid"] = self.sid;
                 self.trashio.sendMessage(msg);
             }
         }
