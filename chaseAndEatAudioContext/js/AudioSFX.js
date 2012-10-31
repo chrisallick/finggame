@@ -1,10 +1,11 @@
-AudioSFX = function( _p ) {
+AudioSFX = function( _p, _autoplay ) {
 	var self = this;
 	var parent = _p;
 
 	this.sounds = new Array();
 
 	this.context = new webkitAudioContext();
+	this.autoplay = _autoplay;
 
     // sfx = new Audio("wav/sfx.wav");
     // http://f1lt3r.com/w3caudio/web-audio-api/basic-examples/looping-sounds-without-gaps.html
@@ -21,6 +22,9 @@ AudioSFX = function( _p ) {
     	request.addEventListener( 'load', function(e) {
         	self.context.decodeAudioData( request.response, function(decoded_data) {
         		self.sounds[0] = decoded_data;
+        		if( self.autoplay ) {
+        			self.play(0);
+        		}
         	}, function(e){
             	console.log("error");
         	});

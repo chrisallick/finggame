@@ -13,7 +13,7 @@ Canvas = function( _target, _options ) {
     this.active = false;
 
     this.images = [];
-    this.sfx = new AudioSFX( self );
+    this.sfx = new AudioSFX( self, true );
     this.food = [];
     this.alive = 5;
 
