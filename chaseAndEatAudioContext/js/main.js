@@ -34,23 +34,4 @@ $(document).ready(function() {
     });
 
     example.setup();
-
-    // sfx = new Audio("wav/sfx.wav");
-    // http://f1lt3r.com/w3caudio/web-audio-api/basic-examples/looping-sounds-without-gaps.html
-    audiocontext = new webkitAudioContext();
-    audiosource = audiocontext.createBufferSource();
-    var request = new XMLHttpRequest();
-    request.addEventListener( 'load', function(e) {
-        audiocontext.decodeAudioData( request.response, function(decoded_data) {
-            audiosource.buffer = decoded_data;
-            audiosource.connect( audiocontext.destination );
-            audiosource.loop = false;
-            audiosource.noteOn( 0 );
-        }, function(e){
-            console.log("error");
-        });
-    }, false);
-    request.open( 'GET', 'wav/sfx.wav', true );
-    request.responseType = "arraybuffer";
-    request.send();
 });

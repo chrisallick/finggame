@@ -13,6 +13,7 @@ Canvas = function( _target, _options ) {
     this.active = false;
 
     this.images = [];
+    this.sfx = new AudioSFX( self );
     this.food = [];
     this.alive = 5;
 
@@ -24,7 +25,8 @@ Canvas = function( _target, _options ) {
     this.checkHits = function() {
         for(var i = 0; i < 5; i++ ) {
             if( this.food[i].alive && this.food[i].hitTest(this.images[0]) ) {
-                sfx.play();
+                //sfx.play();
+                self.sfx.play(0);
                 self.alive--;
             }
         }
